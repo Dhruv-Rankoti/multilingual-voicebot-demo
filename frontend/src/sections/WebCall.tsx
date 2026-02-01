@@ -20,20 +20,20 @@ interface WebCallProps {
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 
-export function WebCall({ userName, userId }: WebCallProps) {
+export function WebCall({ userId }: WebCallProps) {
   const [isInCall, setIsInCall] = useState(false)
   const [isSpeakerOff, setIsSpeakerOff] = useState(false)
   const [callDuration, setCallDuration] = useState(0)
   const [conversation, setConversation] = useState<{type: 'ai' | 'user', text: string}[]>([])
   const [isAiSpeaking, setIsAiSpeaking] = useState(false)
   const [isListening, setIsListening] = useState(false)
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
-  const [room, setRoom] = useState<Room | null>(null)
-  const [recordingTimer, setRecordingTimer] = useState<NodeJS.Timeout | null>(null)
+  const [room, setRoom] = useState<any>(null)
+  const [recordingTimer, setRecordingTimer] = useState<number | null>(null)
+  const [recognition, setRecognition] = useState<any>(null)
   
   const audioRef = useRef<HTMLAudioElement>(null)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const intervalRef = useRef<number | null>(null)
 
   // Start call with SocketIO streaming
   const handleStartCall = async () => {
@@ -205,7 +205,7 @@ export function WebCall({ userName, userId }: WebCallProps) {
     }
     
     scheduleRecording()
-    setMediaRecorder(mediaRecorder)
+    // setMediaRecorder(mediaRecorder) - removed unused
   }
   
   const playAudioFromBase64 = (base64Audio: string) => {

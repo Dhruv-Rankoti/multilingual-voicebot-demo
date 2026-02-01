@@ -27,52 +27,52 @@ interface Message {
 }
 
 // Problem categories for SachAI
-const problemCategories = [
-  {
-    category: '🔋 Swap & Battery Related',
-    issues: [
-      'Swap Information',
-      'Battery Availability',
-      'DSK Battery Unavailable',
-      'Less Range - Within 2 Hours',
-      'Less Range - After 2 Hours',
-      'Battery Pick-Up Request'
-    ]
-  },
-  {
-    category: '💰 Penalty, Leave & Subscription',
-    issues: [
-      'Penalty Information',
-      'Leave / Penalty Removal',
-      'Monthly Subscription',
-      'Payment Over Due',
-      'VIP Pass Info'
-    ]
-  },
-  {
-    category: '🧭 Navigation & Station Issues',
-    issues: [
-      'Navigation Details',
-      'Station Closed'
-    ]
-  },
-  {
-    category: '🧰 Vehicle / Hardware Issues',
-    issues: [
-      'Meter Broken',
-      'Wire Issue',
-      'Connector Problem'
-    ]
-  },
-  {
-    category: '🚨 Theft, Fraud & Legal',
-    issues: [
-      'Meter Stolen',
-      'Battery Stolen',
-      'Vehicle Impounded'
-    ]
-  }
-]
+// const problemCategories = [
+//   {
+//     category: '🔋 Swap & Battery Related',
+//     issues: [
+//       'Swap Information',
+//       'Battery Availability',
+//       'DSK Battery Unavailable',
+//       'Less Range - Within 2 Hours',
+//       'Less Range - After 2 Hours',
+//       'Battery Pick-Up Request'
+//     ]
+//   },
+//   {
+//     category: '💰 Penalty, Leave & Subscription',
+//     issues: [
+//       'Penalty Information',
+//       'Leave / Penalty Removal',
+//       'Monthly Subscription',
+//       'Payment Over Due',
+//       'VIP Pass Info'
+//     ]
+//   },
+//   {
+//     category: '🧭 Navigation & Station Issues',
+//     issues: [
+//       'Navigation Details',
+//       'Station Closed'
+//     ]
+//   },
+//   {
+//     category: '🧰 Vehicle / Hardware Issues',
+//     issues: [
+//       'Meter Broken',
+//       'Wire Issue',
+//       'Connector Problem'
+//     ]
+//   },
+//   {
+//     category: '🚨 Theft, Fraud & Legal',
+//     issues: [
+//       'Meter Stolen',
+//       'Battery Stolen',
+//       'Vehicle Impounded'
+//     ]
+//   }
+// ]
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 export function Chatbot({ userName, userId }: ChatbotProps) {
@@ -305,6 +305,8 @@ export function Chatbot({ userName, userId }: ChatbotProps) {
     return labels[action] || action
   }
 
+  // Unused function - commented out
+  /*
   const generateBotResponse = (input: string): Message => {
     const lowerInput = input.toLowerCase()
     
@@ -377,6 +379,7 @@ export function Chatbot({ userName, userId }: ChatbotProps) {
       timestamp: new Date()
     }
   }
+  */
 
   const generateActionResponse = (action: string): Message => {
     const responses: Record<string, Message> = {
